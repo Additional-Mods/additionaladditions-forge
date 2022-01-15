@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dqu.additionaladditions.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "ArmorItemMixin",
+    "AxeItemMixin",
+    "CrossbowItemMixin",
+    "InstrumentMixin",
+    "LivingEntityMixin",
+    "MobEntityMixin",
+    "PiglinBrainMixin",
+    "RecipeManagerMixin",
+    "RedstoneWireBlockMixin",
+    "WanderingTraderEntityMixin",
+    "ServerAdvancementLoaderMixin"
+  ],
+  "client": [
+    "ClientPlayerEntityMixin",
+    "GameRendererMixin",
+    "HeldItemRendererMixin",
+    "InGameHudMixin",
+    "MouseMixin",
+    "PlayerEntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
