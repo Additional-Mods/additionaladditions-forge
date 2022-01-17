@@ -43,10 +43,11 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeBlock;
 import org.jetbrains.annotations.Nullable;
 
 // Modified RedstoneWireBlock
-public class CopperPatinaBlock extends Block {
+public class CopperPatinaBlock extends Block implements IForgeBlock {
     public static final EnumProperty<RedstoneSide> WIRE_CONNECTION_NORTH;
     public static final EnumProperty<RedstoneSide> WIRE_CONNECTION_EAST;
     public static final EnumProperty<RedstoneSide> WIRE_CONNECTION_SOUTH;
@@ -81,6 +82,12 @@ public class CopperPatinaBlock extends Block {
         }
 
     }
+
+    @Override
+    public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, @Nullable Direction direction) {
+        return false;
+    }
+
 
     private VoxelShape getShapeForState(BlockState state) {
         VoxelShape voxelShape = DOT_SHAPE;
