@@ -32,6 +32,10 @@ public class GameRendererMixin {
         double fov = callbackInfo.getReturnValue();
         double fovMultiplier = Mth.lerp(tickDelta, lastMultiplier, multiplier);
         double zoomedFov = fov * fovMultiplier;
+
+        //TODO make this work
+        AdditionalAdditions.spyglassOverlay = Mth.lerp(0.5F * tickDelta, multiplier, 1.125F);
+
         if (Math.abs(fov-zoomedFov) > 0.5)
             callbackInfo.setReturnValue(zoomedFov);
     }

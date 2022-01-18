@@ -55,21 +55,6 @@ public class WrenchItem extends Item {
         if (state.hasProperty(BlockStateProperties.FACING_HOPPER)) {
             BlockState newstate = state.cycle(BlockStateProperties.FACING_HOPPER);
             world.setBlockAndUpdate(pos, newstate);
-
-            if (AdditionalAdditions.lithiumInstalled && !world.isClientSide()) {
-                /*
-                * Lithium mod caches hopper's output and input inventories
-                * Which causes an issue where the hopper keeps transferring to the old location
-                * This replaces the block entity, which fixes that.
-                */
-                HopperBlockEntity hopperBlockEntity = (HopperBlockEntity) world.getBlockEntity(pos);
-                CompoundTag nbt = hopperBlockEntity.saveWithoutMetadata();
-                world.removeBlockEntity(pos);
-                HopperBlockEntity blockEntity = new HopperBlockEntity(pos, newstate);
-                blockEntity.load(nbt);
-                world.setBlockEntity(blockEntity);
-            }
-
             success(context.getItemInHand(), world, pos, context.getPlayer(), context.getHand());
             return InteractionResult.SUCCESS;
         }
@@ -118,21 +103,6 @@ public class WrenchItem extends Item {
         if (state.hasProperty(BlockStateProperties.FACING_HOPPER)) {
             BlockState newstate = state.cycle(BlockStateProperties.FACING_HOPPER);
             world.setBlockAndUpdate(pos, newstate);
-
-            if (AdditionalAdditions.lithiumInstalled && !world.isClientSide()) {
-                /*
-                 * Lithium mod caches hopper's output and input inventories
-                 * Which causes an issue where the hopper keeps transferring to the old location
-                 * This replaces the block entity, which fixes that.
-                 */
-                HopperBlockEntity hopperBlockEntity = (HopperBlockEntity) world.getBlockEntity(pos);
-                CompoundTag nbt = hopperBlockEntity.saveWithoutMetadata();
-                world.removeBlockEntity(pos);
-                HopperBlockEntity blockEntity = new HopperBlockEntity(pos, newstate);
-                blockEntity.load(nbt);
-                world.setBlockEntity(blockEntity);
-            }
-
             success(stack, world, pos);
         }
         if (state.hasProperty(BlockStateProperties.HORIZONTAL_FACING)) {

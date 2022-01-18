@@ -12,7 +12,7 @@ public class AdditionalAdditions {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String namespace = "additionaladditions";
     public static boolean zoom = false;
-    public static boolean lithiumInstalled = false;
+    public static double spyglassOverlay = 0.5f;
 
     public AdditionalAdditions() {
         if (!Config.initialized) {
