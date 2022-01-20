@@ -25,7 +25,8 @@ public class GameRendererMixin {
         if (!minecraft.options.getCameraType().isFirstPerson()) {
             zoomMultiplier = 1.0F;
         }
-        if (!AdditionalAdditions.zoom) AdditionalAdditions.spyglassOverlay = 0.5F;
+        if (!AdditionalAdditions.zoom || !minecraft.options.getCameraType().isFirstPerson())
+            AdditionalAdditions.spyglassOverlay = 0.5F;
         lastMultiplier = multiplier;
         multiplier += (zoomMultiplier - multiplier) * 0.66F;
     }
