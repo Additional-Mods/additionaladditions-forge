@@ -6,6 +6,7 @@
   "refmap": "AdditionalAdditions.mixins.refmap.json",
   "mixins": [
     "AxeItemMixin",
+    "MobMixin",
     "PiglinAiMixin",
     "RedstoneWireBlockMixin",
     "WanderingTraderMixin"

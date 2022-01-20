@@ -22,7 +22,10 @@ public class GameRendererMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
         double zoomMultiplier = AdditionalAdditions.zoom ? 0.1F : 1.0F;
-        if (!minecraft.options.getCameraType().isFirstPerson()) zoomMultiplier = 1.0F;
+        if (!minecraft.options.getCameraType().isFirstPerson()) {
+            zoomMultiplier = 1.0F;
+        }
+        if (!AdditionalAdditions.zoom) AdditionalAdditions.spyglassOverlay = 0.5F;
         lastMultiplier = multiplier;
         multiplier += (zoomMultiplier - multiplier) * 0.66F;
     }
@@ -32,9 +35,7 @@ public class GameRendererMixin {
         double fov = callbackInfo.getReturnValue();
         double fovMultiplier = Mth.lerp(tickDelta, lastMultiplier, multiplier);
         double zoomedFov = fov * fovMultiplier;
-
-        //TODO make this work
-        AdditionalAdditions.spyglassOverlay = Mth.lerp(0.5F * tickDelta, multiplier, 1.125F);
+        AdditionalAdditions.spyglassOverlay = Mth.lerp(0.5F * tickDelta, AdditionalAdditions.spyglassOverlay, 1.125F);
 
         if (Math.abs(fov-zoomedFov) > 0.5)
             callbackInfo.setReturnValue(zoomedFov);
