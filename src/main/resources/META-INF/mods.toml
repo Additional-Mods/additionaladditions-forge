@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[39,)"
-license="LGPL-3.0"
+license="LGPL-3.0-only"
 [[mods]]
 modId="additionaladditions"
 version="3.0.1"
