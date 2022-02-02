@@ -1,6 +1,16 @@
 package dqu.additionaladditions;
 
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.item.WrenchItem;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -32,6 +42,21 @@ public class AdditionalAdditions {
     }
 
     public void setup(final FMLCommonSetupEvent event) {
-        return;
+        if (Config.get("Wrench")) {
+            DispenserBlock.registerBehavior(AdditionalRegistry.WRENCH_ITEM.get(), new DefaultDispenseItemBehavior() {
+                public ItemStack execute(BlockSource pointer, ItemStack stack) {
+                    WrenchItem wrench = (WrenchItem) stack.getItem();
+
+                    BlockState dstate = pointer.getBlockState();
+                    BlockPos pos = pointer.getPos().relative(dstate.getValue(BlockStateProperties.FACING));
+                    BlockState state = pointer.getLevel().getBlockState(pos);
+
+                    wrench.dispenserUse(pointer.getLevel(), pos, state, stack);
+                    return stack;
+                }
+            });
+        }
+        if (Config.get("CompostableRottenFlesh"))
+            ComposterBlock.add(0.33f, Items.ROTTEN_FLESH);
     }
 }
