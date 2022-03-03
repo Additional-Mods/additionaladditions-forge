@@ -99,10 +99,11 @@ public class AdditionalRegistry {
     public static final RegistryObject<Enchantment> ENCHANTMENT_SPEED = ENCHANTMENTS.register("speed", SpeedEnchantment::new);
 
     // Entities
-    public static final EntityType<GlowStickEntity> GLOW_STICK_ENTITY_ENTITY_TYPE = EntityType.Builder.<GlowStickEntity>of(GlowStickEntity::new, MobCategory.MISC)
-            .sized(0.25f, 0.25f)
-            .setTrackingRange(4).setTrackingRange(10).build("glow_stick");
-    public static final RegistryObject<EntityType<?>> GLOW_STICK_ENTITY = ENTITIES.register("glow_stick", () -> GLOW_STICK_ENTITY_ENTITY_TYPE);
+    public static final RegistryObject<EntityType<?>> GLOW_STICK_ENTITY = ENTITIES.register("glow_stick", () ->
+            EntityType.Builder.<GlowStickEntity>of(GlowStickEntity::new, MobCategory.MISC)
+                    .sized(0.25f, 0.25f)
+                    .setTrackingRange(4).setTrackingRange(10).build("glow_stick")
+            );
 
     // Sound Events
     private static final SoundEvent U_SOUND_EVENT_0308 = new SoundEvent(new ResourceLocation(AdditionalAdditions.namespace, "0308"));

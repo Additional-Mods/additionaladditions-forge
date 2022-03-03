@@ -20,11 +20,11 @@ public class GlowStickEntity extends ThrowableItemProjectile {
     }
 
     public GlowStickEntity(Level world, LivingEntity owner) {
-        super(AdditionalRegistry.GLOW_STICK_ENTITY_ENTITY_TYPE, owner, world);
+        super((EntityType<? extends ThrowableItemProjectile>) AdditionalRegistry.GLOW_STICK_ENTITY.get(), owner, world);
     }
 
     public GlowStickEntity(Level world, double x, double y, double z) {
-        super(AdditionalRegistry.GLOW_STICK_ENTITY_ENTITY_TYPE, x, y, z, world);
+        super((EntityType<? extends ThrowableItemProjectile>) AdditionalRegistry.GLOW_STICK_ENTITY.get(), x, y, z, world);
     }
 
     @Override

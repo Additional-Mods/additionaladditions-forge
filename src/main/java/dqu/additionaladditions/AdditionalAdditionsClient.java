@@ -6,6 +6,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
@@ -64,6 +66,6 @@ public class AdditionalAdditionsClient {
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(AdditionalRegistry.GLOW_STICK_ENTITY_ENTITY_TYPE, ThrownItemRenderer::new);
+        event.registerEntityRenderer((EntityType<? extends ThrowableItemProjectile>) AdditionalRegistry.GLOW_STICK_ENTITY.get(), ThrownItemRenderer::new);
     }
 }

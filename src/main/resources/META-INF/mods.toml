@@ -1,9 +1,9 @@
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[40,)"
 license="LGPL-3.0-only"
 [[mods]]
 modId="additionaladditions"
-version="3.0.1"
+version="3.0.1.1"
 displayName="Additional Additions"
 logoFile="icon.png"
 authors="Dqu1J"
@@ -14,12 +14,12 @@ description='''
 [[dependencies.additionaladditions]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.additionaladditions]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.19)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
