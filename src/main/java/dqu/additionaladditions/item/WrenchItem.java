@@ -2,6 +2,7 @@ package dqu.additionaladditions.item;
 
 import dqu.additionaladditions.AdditionalAdditions;
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
@@ -36,7 +37,7 @@ public class WrenchItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        if (!Config.get("Wrench")) { return InteractionResult.FAIL; }
+        if (!Config.getBool(ConfigValues.WRENCH)) { return InteractionResult.FAIL; }
         Level world = context.getLevel();
         BlockPos pos = context.getClickedPos();
         BlockState state = world.getBlockState(pos);

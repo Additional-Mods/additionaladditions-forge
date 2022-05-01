@@ -1,6 +1,7 @@
 package dqu.additionaladditions.misc;
 
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.sounds.SoundEvent;
@@ -26,8 +27,12 @@ public class PocketMusicSoundInstance extends AbstractTickableSoundInstance {
 
     @Override
     public void tick() {
-        if (this.playerEntity.isDeadOrDying() || !this.playerEntity.getInventory().contains(stack) || !Config.get("PocketJukebox")) {
-            this.stop();
+        ItemStack cursor = this.playerEntity.containerMenu.getCarried();
+        if (cursor == null) cursor = ItemStack.EMPTY;
+        boolean hasDisc = ItemStack.matches(cursor, stack) || this.playerEntity.getInventory().contains(stack);
+
+        if (this.playerEntity.isDeadOrDying() || !hasDisc || !Config.getBool(ConfigValues.POCKET_JUKEBOX)) {
+            this.finish();
         } else {
             this.x = this.playerEntity.getX();
             this.y = this.playerEntity.getY();

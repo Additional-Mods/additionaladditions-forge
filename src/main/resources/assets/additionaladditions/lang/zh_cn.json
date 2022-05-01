@@ -40,27 +40,24 @@
   "block.additionaladditions.copper_patina": "铜锈",
   "block.additionaladditions.rope": "绳子",
   "block.additionaladditions.amethyst_lamp": "紫水晶灯",
+  "block.additionaladditions.patina_block": "Patina Block",
   "enchantment.additionaladditions.precision": "精确",
+  "enchantment.additionaladditions.precision.desc": "Improves crossbow accuracy.",
   "enchantment.additionaladditions.speed": "加速",
+  "enchantment.additionaladditions.speed.desc": "Increases movement speed.",
   "entity.additionaladditions.glow_stick": "荧光棒",
 
-  "item.minecraft.potion.effect.glow_potion": "发光药水",
-  "item.minecraft.potion.effect.long_glow_potion": "发光药水",
+  "depth_meter.elevation": "Altitude: %s",
+
   "item.minecraft.potion.effect.haste_potion": "急迫药水",
   "item.minecraft.potion.effect.long_haste_potion": "急迫药水",
   "item.minecraft.potion.effect.strong_haste_potion": "急迫药水",
-  "item.minecraft.splash_potion.effect.glow_potion": "喷溅型发光药水",
-  "item.minecraft.splash_potion.effect.long_glow_potion": "喷溅型发光药水",
   "item.minecraft.splash_potion.effect.haste_potion": "喷溅型急迫药水",
   "item.minecraft.splash_potion.effect.long_haste_potion": "喷溅型急迫药水",
   "item.minecraft.splash_potion.effect.strong_haste_potion": "喷溅型急迫药水",
-  "item.minecraft.lingering_potion.effect.glow_potion": "滞留型发光药水",
-  "item.minecraft.lingering_potion.effect.long_glow_potion": "滞留型发光药水",
   "item.minecraft.lingering_potion.effect.haste_potion": "滞留型急迫药水",
   "item.minecraft.lingering_potion.effect.long_haste_potion": "滞留型急迫药水",
   "item.minecraft.lingering_potion.effect.strong_haste_potion": "滞留型急迫药水",
-  "item.minecraft.tipped_arrow.effect.glow_potion": "发光箭",
-  "item.minecraft.tipped_arrow.effect.long_glow_potion": "发光箭",
   "item.minecraft.tipped_arrow.effect.haste_potion": "加速箭",
   "item.minecraft.tipped_arrow.effect.long_haste_potion": "急迫箭",
   "item.minecraft.tipped_arrow.effect.strong_haste_potion": "急迫箭",
@@ -86,5 +83,6 @@
   "additionaladditions.advancements.use_watering_can": "它能浇水吗",
   "additionaladditions.advancements.use_watering_can.desc": "使用水壶来加速植物的成长",
 
-  "additionaladditions.gui.config.restart": "重启游戏来应用更新"
+  "additionaladditions.gui.config.restart": "重启游戏来应用更新",
+  "additionaladditions.gui.pocket_jukebox.tooltip": "Secondary Click with a Music Disc to play"
 }

@@ -3,6 +3,8 @@ package dqu.additionaladditions.item;
 import dqu.additionaladditions.AdditionalAdditions;
 import dqu.additionaladditions.config.Config;
 import java.util.List;
+
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -23,7 +25,7 @@ public class MysteriousBundleItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        if (!Config.get("MysteriousBundle")) { return InteractionResultHolder.fail(user.getItemInHand(hand)); }
+        if (!Config.getBool(ConfigValues.MYSTERIOUS_BUNDLE)) { return InteractionResultHolder.fail(user.getItemInHand(hand)); }
         if (world.isClientSide()) return InteractionResultHolder.success(user.getItemInHand(hand));
         ResourceLocation lootTableID = new ResourceLocation(AdditionalAdditions.namespace, "mysterious_bundle");
         LootContext lootContext = (new LootContext.Builder((ServerLevel) world)).withRandom(world.random).create(LootContextParamSets.EMPTY);

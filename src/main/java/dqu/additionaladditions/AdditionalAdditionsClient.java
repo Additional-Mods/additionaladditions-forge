@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.gui.IIngameOverlay;
@@ -54,12 +55,25 @@ public class AdditionalAdditionsClient {
             });
 
             ItemProperties.register(AdditionalRegistry.DEPTH_METER_ITEM.get(), new ResourceLocation(AdditionalAdditions.namespace, "angle"), (stack, level, living, id) -> {
-                if (living == null) return 0.2f;
-                int height = living.level.getMaxBuildHeight() - living.level.getMinBuildHeight();
-                double playerY = living.getY() - living.level.getMinBuildHeight();
-                double quarter = height / 4d;
-                int value = (int) (playerY / quarter);
-                return (value < 0) ? 0 : (Math.min(value, 3) / 10f);
+                if (level == null) return 0.3125F;
+                Level world = living.level;
+                if (world == null) return 0.3125F;
+
+                float sea = world.getSeaLevel();
+                float height = living.getBlockY();
+                float top = world.getMaxBuildHeight();
+                float bottom = world.getMinBuildHeight();
+
+                if (height > top) return 0;
+                if (height < bottom) return 1;
+
+                if (height >= sea) {
+                    double val = (height / (2 * (sea - top))) + 0.25 - ((sea + top) / (4 * (sea - top)));
+                    return (float) val;
+                } else {
+                    double val = (height / (2 * (bottom - sea))) + 0.75 - ((bottom + sea) / (4 * (bottom - sea)));
+                    return (float) val;
+                }
             });
         });
     }

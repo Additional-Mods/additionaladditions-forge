@@ -40,27 +40,24 @@
   "block.additionaladditions.copper_patina": "녹슨 구리",
   "block.additionaladditions.rope": "밧줄",
   "block.additionaladditions.amethyst_lamp": "자수정 전등",
+  "block.additionaladditions.patina_block": "Patina Block",
   "enchantment.additionaladditions.precision": "정도",
+  "enchantment.additionaladditions.precision.desc": "Improves crossbow accuracy.",
   "enchantment.additionaladditions.speed": "신속",
+  "enchantment.additionaladditions.speed.desc": "Increases movement speed.",
   "entity.additionaladditions.glow_stick": "발광 막대기",
 
-  "item.minecraft.potion.effect.glow_potion": "발광의 포션",
-  "item.minecraft.potion.effect.long_glow_potion": "발광의 포션",
+  "depth_meter.elevation": "Altitude: %s",
+
   "item.minecraft.potion.effect.haste_potion": "성급한의 포션",
   "item.minecraft.potion.effect.long_haste_potion": "성급한의 포션",
   "item.minecraft.potion.effect.strong_haste_potion": "성급한의 포션",
-  "item.minecraft.splash_potion.effect.glow_potion": "투척용 발광의 포션",
-  "item.minecraft.splash_potion.effect.long_glow_potion": "투척용 발광의 포션",
   "item.minecraft.splash_potion.effect.haste_potion": "투척용 성급한의 포션",
   "item.minecraft.splash_potion.effect.long_haste_potion": "투척용 성급한의 포션",
   "item.minecraft.splash_potion.effect.strong_haste_potion": "투척용 성급한의 포션",
-  "item.minecraft.lingering_potion.effect.glow_potion": "잔류형 발광의 포션",
-  "item.minecraft.lingering_potion.effect.long_glow_potion": "잔류형 발광의 포션",
   "item.minecraft.lingering_potion.effect.haste_potion": "잔류형 성급한의 포션",
   "item.minecraft.lingering_potion.effect.long_haste_potion": "잔류형 성급한의 포션",
   "item.minecraft.lingering_potion.effect.strong_haste_potion": "잔류형 성급한의 포션",
-  "item.minecraft.tipped_arrow.effect.glow_potion": "발광의 화살",
-  "item.minecraft.tipped_arrow.effect.long_glow_potion": "발광의 화살",
   "item.minecraft.tipped_arrow.effect.haste_potion": "성급한의 화살",
   "item.minecraft.tipped_arrow.effect.long_haste_potion": "성급한의 화살",
   "item.minecraft.tipped_arrow.effect.strong_haste_potion": "성급한의 화살",
@@ -86,5 +83,6 @@
   "additionaladditions.advancements.use_watering_can": "Water it can",
   "additionaladditions.advancements.use_watering_can.desc": "Obtain and use the Watering Can to fertilize your crops",
 
-  "additionaladditions.gui.config.restart": "변경사항을 저장하려면 게임을 재시작 하시오"
+  "additionaladditions.gui.config.restart": "변경사항을 저장하려면 게임을 재시작 하시오",
+  "additionaladditions.gui.pocket_jukebox.tooltip": "Secondary Click with a Music Disc to play"
 }

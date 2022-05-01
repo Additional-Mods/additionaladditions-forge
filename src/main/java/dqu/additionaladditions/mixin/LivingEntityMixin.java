@@ -2,6 +2,7 @@ package dqu.additionaladditions.mixin;
 
 import dqu.additionaladditions.AdditionalRegistry;
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,7 +33,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tryAddSoulSpeed", at = @At("HEAD"))
     private void applySpeedBoost(CallbackInfo ci) {
-        if (!Config.get("EnchantmentSpeed")) return;
+        if (!Config.getBool(ConfigValues.ENCHANTMENT_SPEED)) return;
         int i = EnchantmentHelper.getEnchantmentLevel(AdditionalRegistry.ENCHANTMENT_SPEED.get(), ((LivingEntity) (Object) this));
         if (i > 0) {
             if (getBlockStateOn().isAir()) return;

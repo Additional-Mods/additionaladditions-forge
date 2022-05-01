@@ -2,6 +2,7 @@ package dqu.additionaladditions.block;
 
 import dqu.additionaladditions.config.Config;
 import dqu.additionaladditions.AdditionalRegistry;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -50,7 +51,7 @@ public class RopeBlock extends Block {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        if (!Config.get("Ropes")) return false;
+        if (!Config.getBool(ConfigValues.ROPES)) return false;
         BlockState up = world.getBlockState(pos.relative(Direction.UP));
         if(up.is(this) || up.isFaceSturdy(world, pos.relative(Direction.UP), Direction.DOWN)) return true;
 

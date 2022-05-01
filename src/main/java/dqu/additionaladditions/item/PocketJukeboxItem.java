@@ -1,7 +1,10 @@
 package dqu.additionaladditions.item;
 
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import dqu.additionaladditions.misc.PocketMusicSoundInstance;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Style;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -56,7 +59,7 @@ public class PocketJukeboxItem extends Item {
 
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack otherStack, Slot slot, ClickAction clickType, Player player, SlotAccess cursorStackReference) {
-        if (!Config.get("PocketJukebox")) return false;
+        if (!Config.getBool(ConfigValues.POCKET_JUKEBOX)) return false;
         if (clickType != ClickAction.SECONDARY) return false;
         Level world = player.level;
 
@@ -103,9 +106,12 @@ public class PocketJukeboxItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         String disc = nbtGetDisc(stack);
-        if (disc == null) return;
-        Item discItem = Registry.ITEM.get(new ResourceLocation(disc));
-        String description = discItem.getDescriptionId() + ".desc";
-        tooltip.add(new TranslatableComponent(description));
+        if (disc == null) {
+            tooltip.add(new TranslatableComponent("additionaladditions.gui.pocket_jukebox.tooltip").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+        } else {
+            Item discItem = Registry.ITEM.get(new ResourceLocation(disc));
+            String description = discItem.getDescriptionId() + ".desc";
+            tooltip.add(new TranslatableComponent(description));
+        }
     }
 }

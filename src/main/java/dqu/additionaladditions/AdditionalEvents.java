@@ -1,8 +1,10 @@
 package dqu.additionaladditions;
 
+import dqu.additionaladditions.behaviour.BehaviourManager;
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -15,6 +17,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,10 +31,12 @@ public class AdditionalEvents {
         public static void tickEvent(TickEvent.ClientTickEvent event) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player == null) return;
-            if (!Config.get("DepthMeter")) return;
+            if (!Config.getBool(ConfigValues.DEPTH_METER, "enabled")) return;
             if (mc.player.isHolding(AdditionalRegistry.DEPTH_METER_ITEM.get())) {
-                String level = String.valueOf((int) mc.player.getY());
-                mc.player.displayClientMessage(new TextComponent(level), true);
+                if (Config.getBool(ConfigValues.DEPTH_METER, "displayElevationAlways")) {
+                    String level = String.valueOf((int) mc.player.getY());
+                    mc.player.displayClientMessage(new TranslatableComponent("depth_meter.elevation", level), true);
+                }
             }
         }
     }
@@ -49,11 +54,16 @@ public class AdditionalEvents {
         private static final ResourceLocation SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID = BuiltInLootTables.SHIPWRECK_SUPPLY;
 
         @SubscribeEvent
+        public static void registerResourceLoaders(AddReloadListenerEvent event) {
+            event.addListener(BehaviourManager.INSTANCE);
+        }
+
+        @SubscribeEvent
         public static void modifyLootTables(LootTableLoadEvent event) {
             LootTable table = event.getTable();
             ResourceLocation id = table.getLootTableId();
 
-            if (ELDER_GUARDIAN_LOOT_TABLE_ID.equals(id) && Config.get("TridentShard")) {
+            if (ELDER_GUARDIAN_LOOT_TABLE_ID.equals(id) && Config.getBool(ConfigValues.TRIDENT_SHARD)) {
                 LootPool pool = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1f))
                         .add(LootItem.lootTableItem(AdditionalRegistry.TRIDENT_SHARD.get()))
@@ -62,7 +72,7 @@ public class AdditionalEvents {
                 table.addPool(pool);
             }
             if (DUNGEON_CHEST_LOOT_TABLE_ID.equals(id) || MINESHAFT_CHEST_LOOT_TABLE_ID.equals(id) || STRONGHOLD_CHEST_LOOT_TABLE_ID.equals(id)) {
-                if (Config.get("GlowStick")) {
+                if (Config.getBool(ConfigValues.GLOW_STICK)) {
                     LootPool pool = LootPool.lootPool()
                             .setRolls(UniformGenerator.between(0, 4))
                             .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))
@@ -70,7 +80,7 @@ public class AdditionalEvents {
                             .build();
                     table.addPool(pool);
                 }
-                if (Config.get("Ropes")) {
+                if (Config.getBool(ConfigValues.ROPES)) {
                     LootPool pool = LootPool.lootPool()
                             .setRolls(UniformGenerator.between(1, 4))
                             .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 8)))
@@ -78,7 +88,7 @@ public class AdditionalEvents {
                             .build();
                     table.addPool(pool);
                 }
-                if (Config.get("DepthMeter")) {
+                if (Config.getBool(ConfigValues.DEPTH_METER, "enabled")) {
                     LootPool pool = LootPool.lootPool()
                             .setRolls(ConstantValue.exactly(1))
                             .when(LootItemRandomChanceCondition.randomChance(0.1f))
@@ -88,7 +98,7 @@ public class AdditionalEvents {
                 }
             }
             if (DUNGEON_CHEST_LOOT_TABLE_ID.equals(id) || MANSION_CHEST_LOOT_TABLE_ID.equals(id)) {
-                if (Config.get("MusicDiscs")) {
+                if (Config.getBool(ConfigValues.MUSIC_DISCS)) {
                     LootPool pool = LootPool.lootPool()
                             .setRolls(ConstantValue.exactly(1))
                             .when(LootItemRandomChanceCondition.randomChance(0.25f))
@@ -99,7 +109,7 @@ public class AdditionalEvents {
                     table.addPool(pool);
                 }
             }
-            if (SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID.equals(id) && Config.get("ShipwreckSpyglassLoot")) {
+            if (SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID.equals(id) && Config.getBool(ConfigValues.SHIPWRECK_SPYGLASS_LOOT)) {
                 LootPool pool = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.5f))
@@ -108,7 +118,7 @@ public class AdditionalEvents {
                 table.addPool(pool);
             }
             if (ZOMBIE_LOOT_TABLE_ID.equals(id) || CREEPER_LOOT_TABLE_ID.equals(id)) {
-                if (Config.get("ChickenNugget")) {
+                if (Config.getBool(ConfigValues.CHICKEN_NUGGET)) {
                     LootPool pool = LootPool.lootPool()
                             .setRolls(ConstantValue.exactly(1))
                             .when(LootItemRandomChanceCondition.randomChance(0.025f))
@@ -117,7 +127,7 @@ public class AdditionalEvents {
                     table.addPool(pool);
                 }
             }
-            if (PIGLIN_BARTERING_LOOT_TABLE_ID.equals(id) && Config.get("GoldRing")) {
+            if (PIGLIN_BARTERING_LOOT_TABLE_ID.equals(id) && Config.getBool(ConfigValues.GOLD_RING)) {
                 LootPool pool = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(LootItemRandomChanceCondition.randomChance(0.015f))

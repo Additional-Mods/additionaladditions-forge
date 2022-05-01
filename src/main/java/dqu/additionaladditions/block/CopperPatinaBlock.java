@@ -11,6 +11,7 @@ import java.util.Set;
 
 import dqu.additionaladditions.config.Config;
 import dqu.additionaladditions.AdditionalRegistry;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
@@ -230,7 +231,7 @@ public class CopperPatinaBlock extends Block implements IForgeBlock {
     }
 
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        if (!Config.get("CopperPatina")) return false;
+        if (!Config.getBool(ConfigValues.COPPER_PATINA)) return false;
         BlockPos blockPos = pos.below();
         BlockState blockState = world.getBlockState(blockPos);
         return this.canRunOnTop(world, blockPos, blockState);
@@ -242,7 +243,7 @@ public class CopperPatinaBlock extends Block implements IForgeBlock {
 
     private void update(Level world, BlockPos pos, BlockState state) {
         int i = this.getReceivedRedstonePower(world, pos);
-        if (!Config.get("CopperPatina")) i = 0;
+        if (!Config.getBool(ConfigValues.COPPER_PATINA)) i = 0;
         if ((Integer)state.getValue(POWER) != i) {
             if (world.getBlockState(pos) == state) {
                 world.setBlock(pos, (BlockState)state.setValue(POWER, i), 2);

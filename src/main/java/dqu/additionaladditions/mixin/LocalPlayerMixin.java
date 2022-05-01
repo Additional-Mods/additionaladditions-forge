@@ -3,6 +3,7 @@ package dqu.additionaladditions.mixin;
 import dqu.additionaladditions.AdditionalAdditions;
 import dqu.additionaladditions.AdditionalRegistry;
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class LocalPlayerMixin {
     @Inject(method = "isShiftKeyDown", at = @At("HEAD"))
     private void checkSneakZoom(CallbackInfoReturnable<Boolean> cir) {
-        if (!Config.get("Crossbows")) return;
+        if (!Config.getBool(ConfigValues.CROSSBOWS)) return;
         Player player = (Player) (Object) this;
         if (!player.getLevel().isClientSide()) return;
         ItemStack stack = player.getMainHandItem();

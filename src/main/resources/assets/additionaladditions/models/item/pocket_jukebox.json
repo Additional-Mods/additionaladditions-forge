@@ -6,13 +6,13 @@
   "overrides": [
     {
       "predicate": {
-        "additionaladditions:disc": 0
+        "disc": 0
       },
       "model": "additionaladditions:item/pocket_jukebox_0"
     },
     {
       "predicate": {
-        "additionaladditions:disc": 1
+        "disc": 1
       },
       "model": "additionaladditions:item/pocket_jukebox_1"
     }

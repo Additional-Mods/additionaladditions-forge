@@ -40,27 +40,24 @@
   "block.additionaladditions.copper_patina": "Медная Патина",
   "block.additionaladditions.rope": "Верёвка",
   "block.additionaladditions.amethyst_lamp": "Аметистовый Фонарь",
+  "block.additionaladditions.patina_block": "Блок Патины",
   "enchantment.additionaladditions.precision": "Меткость",
+  "enchantment.additionaladditions.precision.desc": "Improves crossbow accuracy.",
   "enchantment.additionaladditions.speed": "Скорость",
+  "enchantment.additionaladditions.speed.desc": "Increases movement speed.",
   "entity.additionaladditions.glow_stick": "Светящаяся Палочка",
 
-  "item.minecraft.potion.effect.glow_potion": "Зелье Свечения",
-  "item.minecraft.potion.effect.long_glow_potion": "Зелье Свечения",
+  "depth_meter.elevation": "Altitude: %s",
+
   "item.minecraft.potion.effect.haste_potion": "Зелье Спешки",
   "item.minecraft.potion.effect.long_haste_potion": "Зелье Спешки",
   "item.minecraft.potion.effect.strong_haste_potion": "Зелье Спешки",
-  "item.minecraft.splash_potion.effect.glow_potion": "Взрывное Зелье Свечения",
-  "item.minecraft.splash_potion.effect.long_glow_potion": "Взрывное Зелье Свечения",
   "item.minecraft.splash_potion.effect.haste_potion": "Взрывное Зелье Спешки",
   "item.minecraft.splash_potion.effect.long_haste_potion": "Взрывное Зелье Спешки",
   "item.minecraft.splash_potion.effect.strong_haste_potion": "Взрывное Зелье Спешки",
-  "item.minecraft.lingering_potion.effect.glow_potion": "Оседающее Зелье Свечения",
-  "item.minecraft.lingering_potion.effect.long_glow_potion": "Оседающее Зелье Свечения",
   "item.minecraft.lingering_potion.effect.haste_potion": "Оседающее Зелье Спешки",
   "item.minecraft.lingering_potion.effect.long_haste_potion": "Оседающее Зелье Спешки",
   "item.minecraft.lingering_potion.effect.strong_haste_potion": "Оседающее Зелье Спешки",
-  "item.minecraft.tipped_arrow.effect.glow_potion": "Стрела Свечения",
-  "item.minecraft.tipped_arrow.effect.long_glow_potion": "Стрела Свечения",
   "item.minecraft.tipped_arrow.effect.haste_potion": "Стрела Спешки",
   "item.minecraft.tipped_arrow.effect.long_haste_potion": "Стрела Спешки",
   "item.minecraft.tipped_arrow.effect.strong_haste_potion": "Стрела Спешки",
@@ -86,5 +83,6 @@
   "additionaladditions.advancements.use_watering_can": "Лей ка",
   "additionaladditions.advancements.use_watering_can.desc": "Используйте Лейку чтобы удобрять растения",
 
-  "additionaladditions.gui.config.restart": "Перезапустите игру чтобы применить изменения"
+  "additionaladditions.gui.config.restart": "Перезапустите игру чтобы применить изменения",
+  "additionaladditions.gui.pocket_jukebox.tooltip": "Вторичный Клик пластинкой чтобы играть"
 }

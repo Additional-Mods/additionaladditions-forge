@@ -3459,34 +3459,34 @@
 	"overrides": [
 		{
 			"predicate": {
-				"additionaladditions:pulling": 1
+				"pulling": 1
 			},
 			"model": "additionaladditions:item/crossbow_with_spyglass_pulling_0"
 		},
 		{
 			"predicate": {
-				"additionaladditions:pulling": 1,
-				"additionaladditions:pull": 0.58
+				"pulling": 1,
+				"pull": 0.58
 			},
 			"model": "additionaladditions:item/crossbow_with_spyglass_pulling_1"
 		},
 		{
 			"predicate": {
-				"additionaladditions:pulling": 1,
-				"additionaladditions:pull": 1.0
+				"pulling": 1,
+				"pull": 1.0
 			},
 			"model": "additionaladditions:item/crossbow_with_spyglass_pulling_2"
 		},
 		{
 			"predicate": {
-				"additionaladditions:charged": 1
+				"charged": 1
 			},
 			"model": "additionaladditions:item/crossbow_with_spyglass_arrow"
 		},
 		{
 			"predicate": {
-				"additionaladditions:charged": 1,
-				"additionaladditions:firework": 1
+				"charged": 1,
+				"firework": 1
 			},
 			"model": "additionaladditions:item/crossbow_with_spyglass_firework"
 		}

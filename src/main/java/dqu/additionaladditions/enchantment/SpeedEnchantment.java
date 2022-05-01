@@ -1,6 +1,7 @@
 package dqu.additionaladditions.enchantment;
 
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -18,7 +19,9 @@ public class SpeedEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment other) {
-        if (other == Enchantments.SOUL_SPEED && Config.get("EnchantmentSpeed")) return false;
+        if (Config.getBool(ConfigValues.ENCHANTMENT_SPEED)) return false;
+        if (other == Enchantments.SOUL_SPEED || other == Enchantments.FROST_WALKER || other == Enchantments.DEPTH_STRIDER)
+            return false;
         return super.checkCompatibility(other);
     }
 }

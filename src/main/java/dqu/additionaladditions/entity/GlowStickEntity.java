@@ -39,7 +39,7 @@ public class GlowStickEntity extends ThrowableItemProjectile {
             BlockPos pos = new BlockPos(this.getX(), this.getY(), this.getZ());
             if (this.level.getBlockState(pos).isAir()) {
                 this.level.setBlockAndUpdate(pos, AdditionalRegistry.GLOW_STICK_BLOCK.get().defaultBlockState()
-                    .setValue(GlowStickBlock.FLIPPED, level.getRandom().nextBoolean()));
+                        .setValue(GlowStickBlock.FLIPPED, level.getRandom().nextBoolean()));
                 this.level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.GLASS_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
             } else {
                 ItemStack stack = new ItemStack(AdditionalRegistry.GLOW_STICK_ITEM.get(), 1);

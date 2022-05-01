@@ -2,6 +2,7 @@ package dqu.additionaladditions.mixin;
 
 import dqu.additionaladditions.AdditionalRegistry;
 import dqu.additionaladditions.config.Config;
+import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CrossbowItem;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public class CrossbowItemMixin {
     @ModifyVariable(method = "performShooting", at = @At("HEAD"), index = 5, argsOnly = true)
     private static float shootAll(float original, Level world, LivingEntity entity, InteractionHand hand, ItemStack stack, float speed, float divergence) {
-        if (!Config.get("EnchantmentPrecision")) return original;
+        if (!Config.getBool(ConfigValues.ENCHANTMENT_PRECISION)) return original;
         int level = EnchantmentHelper.getItemEnchantmentLevel(AdditionalRegistry.ENCHANTMENT_PRECISION.get(), stack);
         if (level <= 0) return original;
         float precision = (float) ( (level * 3) * 0.1 );

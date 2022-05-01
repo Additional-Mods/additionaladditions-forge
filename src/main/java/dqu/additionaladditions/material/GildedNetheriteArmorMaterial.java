@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 public class GildedNetheriteArmorMaterial implements ArmorMaterial {
     private static final int[] BASE_DURABILITY = {481, 555, 592, 407};
     private static final int[] PROTECTION_VALUES = {3, 6, 8, 3};
+    public static final String NAME = "gilded_netherite";
 
     @Override
     public int getDurabilityForSlot(EquipmentSlot slot) {
@@ -33,7 +34,7 @@ public class GildedNetheriteArmorMaterial implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return "gilded_netherite";
+        return NAME;
     }
 
     @Override
@@ -53,6 +54,6 @@ public class GildedNetheriteArmorMaterial implements ArmorMaterial {
 
     @Override
     public String toString() {
-        return "GILDED_NETHERITE";
+        return NAME.toUpperCase();
     }
 }
