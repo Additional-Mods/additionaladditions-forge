@@ -4,6 +4,7 @@ import dqu.additionaladditions.AdditionalAdditions;
 import dqu.additionaladditions.AdditionalRegistry;
 import dqu.additionaladditions.config.Config;
 import dqu.additionaladditions.config.ConfigValues;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +22,8 @@ public class LocalPlayerMixin {
         Player player = (Player) (Object) this;
         if (!player.getLevel().isClientSide()) return;
         ItemStack stack = player.getMainHandItem();
-        if (stack.is(AdditionalRegistry.CROSSBOW_WITH_SPYGLASS.get())) {
+        Minecraft mc = Minecraft.getInstance();
+        if (stack.is(AdditionalRegistry.CROSSBOW_WITH_SPYGLASS.get()) && mc.options.getCameraType().isFirstPerson()) {
             boolean sneaking = player.isCrouching();
             if (sneaking && sneaking != AdditionalAdditions.zoom) {
                 player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
