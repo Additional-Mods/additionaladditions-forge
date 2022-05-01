@@ -1,5 +1,6 @@
 package dqu.additionaladditions;
 
+import com.google.common.collect.ImmutableSet;
 import dqu.additionaladditions.block.CopperPatinaBlock;
 import dqu.additionaladditions.block.GlowStickBlock;
 import dqu.additionaladditions.block.PatinaBlock;
@@ -137,7 +138,7 @@ public class AdditionalRegistry {
     // POIs
     public static final RegistryObject<PoiType> AMETHYST_LAMP_POI = POIS.register("amethyst_lamp_poi", () -> new PoiType(
             "amethyst_lamp_poi",
-            AMETHYST_LAMP.get().getStateDefinition().getPossibleStates().stream().filter(state -> state.getValue(BlockStateProperties.LIT)).collect(Collectors.toSet()),
+            ImmutableSet.copyOf(AMETHYST_LAMP.get().getStateDefinition().getPossibleStates().stream().filter(state -> state.getValue(BlockStateProperties.LIT)).toList()),
             0, 8
     ));
 }

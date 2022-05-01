@@ -38,6 +38,7 @@ public class AdditionalAdditions {
         AdditionalRegistry.SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         AdditionalRegistry.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         AdditionalRegistry.POTIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AdditionalRegistry.POIS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(AdditionalAdditionsClient::clientSetup);
