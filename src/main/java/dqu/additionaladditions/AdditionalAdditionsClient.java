@@ -55,9 +55,8 @@ public class AdditionalAdditionsClient {
             });
 
             ItemProperties.register(AdditionalRegistry.DEPTH_METER_ITEM.get(), new ResourceLocation(AdditionalAdditions.namespace, "angle"), (stack, level, living, id) -> {
-                if (level == null) return 0.3125F;
+                if (living == null) return 0.3125F;
                 Level world = living.level;
-                if (world == null) return 0.3125F;
 
                 float sea = world.getSeaLevel();
                 float height = living.getBlockY();
