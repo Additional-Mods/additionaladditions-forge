@@ -19,9 +19,9 @@ public class SpeedEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment other) {
-        if (Config.getBool(ConfigValues.ENCHANTMENT_SPEED)) return false;
-        if (other == Enchantments.SOUL_SPEED || other == Enchantments.FROST_WALKER || other == Enchantments.DEPTH_STRIDER)
+        if (other == Enchantments.SOUL_SPEED || other == Enchantments.FROST_WALKER || other == Enchantments.DEPTH_STRIDER) {
             return false;
+        }
         return super.checkCompatibility(other);
     }
 
