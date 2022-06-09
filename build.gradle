@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '4.0.4'
+version = '5.0.0'
 group = 'dqu.additionaladditions' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'additionaladditions'
 

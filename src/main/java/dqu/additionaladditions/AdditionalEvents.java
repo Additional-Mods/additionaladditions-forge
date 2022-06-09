@@ -122,7 +122,7 @@ public class AdditionalEvents {
                 if (Config.getBool(ConfigValues.CHICKEN_NUGGET)) {
                     LootPool pool = LootPool.lootPool()
                             .setRolls(ConstantValue.exactly(1))
-                            .when(LootItemRandomChanceCondition.randomChance(0.025f))
+                            .when(LootItemRandomChanceCondition.randomChance(0.0125f))
                             .add(LootItem.lootTableItem(AdditionalRegistry.CHICKEN_NUGGET.get()))
                             .build();
                     table.addPool(pool);
