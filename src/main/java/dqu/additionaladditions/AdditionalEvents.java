@@ -4,7 +4,8 @@ import dqu.additionaladditions.behaviour.BehaviourManager;
 import dqu.additionaladditions.config.Config;
 import dqu.additionaladditions.config.ConfigValues;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -35,7 +36,7 @@ public class AdditionalEvents {
             if (mc.player.isHolding(AdditionalRegistry.DEPTH_METER_ITEM.get())) {
                 if (Config.getBool(ConfigValues.DEPTH_METER, "displayElevationAlways")) {
                     String level = String.valueOf((int) mc.player.getY());
-                    mc.player.displayClientMessage(new TranslatableComponent("depth_meter.elevation", level), true);
+                    mc.player.displayClientMessage(MutableComponent.create(new TranslatableContents("depth_meter.elevation", level)), true);
                 }
             }
         }

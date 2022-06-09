@@ -136,8 +136,8 @@ public class AdditionalRegistry {
     public static final RegistryObject<Potion> STRONG_HASTE_POTION = POTIONS.register("strong_haste_potion", () -> new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 1600, 1)));
 
     // POIs
-    public static final RegistryObject<PoiType> AMETHYST_LAMP_POI = POIS.register("amethyst_lamp_poi", () -> new PoiType(
-            "amethyst_lamp_poi",
+    public static ResourceLocation AMETHYST_LAMP_POI_RL = new ResourceLocation(AdditionalAdditions.namespace, "amethyst_lamp_poi");
+    public static final RegistryObject<PoiType> AMETHYST_LAMP_POI = POIS.register(AMETHYST_LAMP_POI_RL.getPath(), () -> new PoiType(
             ImmutableSet.copyOf(AMETHYST_LAMP.get().getStateDefinition().getPossibleStates().stream().filter(state -> state.getValue(BlockStateProperties.LIT)).toList()),
             0, 8
     ));
