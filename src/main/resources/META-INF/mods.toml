@@ -4,11 +4,11 @@ license="LGPL-3.0-only"
 issueTrackerURL="https://github.com/Additional-Mods/additionaladditions"
 [[mods]]
 modId="additionaladditions"
-version="4.0.4"
+version="4.0.5"
 displayName="Additional Additions"
 logoFile="icon.png"
 authors="Dqu1J"
-credits="MorganFreeguy | MF#1861, adoghr, Avila27, aresociety, wdnmdyaya, zrll12, ChromexUnderscore, DerTwitchLappen, Mira047, Darkhax, Fuzss, Emafire003"
+credits="MorganFreeguy | MF#1861, adoghr, Avila27, aresociety, wdnmdyaya, zrll12, ChromexUnderscore, DerTwitchLappen, Mira047, Darkhax, Fuzss, Emafire003, JustFoxx, foul-fortune-feline, houlstycraft"
 description='''
   Additional Additions is a mod that aims to add additional uses for Copper, Amethyst and Glow Ink Sacs as well as other useful additional additions to the game.
 '''
