@@ -39,6 +39,7 @@ public class AdditionalAdditions {
         AdditionalRegistry.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         AdditionalRegistry.POTIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
         AdditionalRegistry.POIS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AdditionalRegistry.LOOT_MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(AdditionalAdditionsClient::clientSetup);
