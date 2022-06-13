@@ -14,7 +14,9 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -101,7 +103,8 @@ public class AdditionalLootModifier extends LootModifier {
             if (Config.getBool(ConfigValues.CHICKEN_NUGGET)) {
                 LootPool pool = LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
-                        .when(LootItemRandomChanceCondition.randomChance(0.0125f))
+                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                        .when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025f, 0.1f))
                         .add(LootItem.lootTableItem(AdditionalRegistry.CHICKEN_NUGGET.get()))
                         .build();
                 pool.addRandomItems(generatedLoot::add, context);
