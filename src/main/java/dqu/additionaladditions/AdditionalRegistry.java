@@ -31,11 +31,10 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
 public class AdditionalRegistry {
@@ -47,6 +46,7 @@ public class AdditionalRegistry {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, AdditionalAdditions.namespace);
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, AdditionalAdditions.namespace);
     public static final DeferredRegister<PoiType> POIS = DeferredRegister.create(ForgeRegistries.POI_TYPES, AdditionalAdditions.namespace);
+    public static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, AdditionalAdditions.namespace);
 
     // Items
     public static final RegistryObject<Item> WATERING_CAN = ITEMS.register("watering_can", () -> new WateringCanItem(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS).stacksTo(1).durability(101)));
@@ -136,9 +136,12 @@ public class AdditionalRegistry {
     public static final RegistryObject<Potion> STRONG_HASTE_POTION = POTIONS.register("strong_haste_potion", () -> new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 1600, 1)));
 
     // POIs
-    public static final RegistryObject<PoiType> AMETHYST_LAMP_POI = POIS.register("amethyst_lamp_poi", () -> new PoiType(
-            "amethyst_lamp_poi",
+    public static ResourceLocation AMETHYST_LAMP_POI_RL = new ResourceLocation(AdditionalAdditions.namespace, "amethyst_lamp_poi");
+    public static final RegistryObject<PoiType> AMETHYST_LAMP_POI = POIS.register(AMETHYST_LAMP_POI_RL.getPath(), () -> new PoiType(
             ImmutableSet.copyOf(AMETHYST_LAMP.get().getStateDefinition().getPossibleStates().stream().filter(state -> state.getValue(BlockStateProperties.LIT)).toList()),
             0, 8
     ));
+
+    // Loot Modifier Serializers
+    public static final RegistryObject<GlobalLootModifierSerializer<?>> ADDITIONAL_LOOT_MODIFIER = LOOT_MODIFIERS.register("additional_loot_modifier", AdditionalLootModifier.Serializer::new);
 }

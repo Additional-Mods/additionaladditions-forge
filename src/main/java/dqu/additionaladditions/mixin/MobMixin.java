@@ -22,7 +22,7 @@ public abstract class MobMixin extends LivingEntity {
     protected MobMixin(EntityType<? extends LivingEntity> entityType, Level world) {
         super(entityType, world);
     }
-    private final static boolean isFeatureEnabled = Config.getBool(ConfigValues.AMETHYST_LAMP);
+    private final static boolean isFeatureEnabled = Config.getBool(ConfigValues.AMETHYST_LAMP, "enabled");
 
     @Inject(method = "checkDespawn", at = @At("TAIL"))
     public void checkDespawn(CallbackInfo ci) {
@@ -31,13 +31,14 @@ public abstract class MobMixin extends LivingEntity {
 
         PoiManager poiManager = ((ServerLevel)level).getPoiManager();
         long count = poiManager.getCountInRange(
-                (poiType) -> poiType == AdditionalRegistry.AMETHYST_LAMP_POI.get(),
-                blockPosition(),
-                8,
-                PoiManager.Occupancy.ANY
+                (poiType) -> {
+                    return poiType.is(AdditionalRegistry.AMETHYST_LAMP_POI_RL);
+                },
+                blockPosition(), 8, PoiManager.Occupancy.ANY
         );
 
-        if (count > 0 && getRandom().nextBoolean()) {
+        Float chance = Config.get(ConfigValues.AMETHYST_LAMP, "despawnChance");
+        if (count > 0 && chance != null && getRandom().nextFloat() < chance) {
             this.discard();
         }
     }

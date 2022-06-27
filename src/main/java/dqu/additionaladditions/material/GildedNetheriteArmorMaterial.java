@@ -7,6 +7,8 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.Locale;
+
 public class GildedNetheriteArmorMaterial implements ArmorMaterial {
     private static final int[] BASE_DURABILITY = {481, 555, 592, 407};
     private static final int[] PROTECTION_VALUES = {3, 6, 8, 3};
@@ -54,6 +56,6 @@ public class GildedNetheriteArmorMaterial implements ArmorMaterial {
 
     @Override
     public String toString() {
-        return NAME.toUpperCase();
+        return NAME.toUpperCase(Locale.ROOT);
     }
 }

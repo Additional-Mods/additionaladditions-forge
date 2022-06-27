@@ -84,5 +84,5 @@
   "additionaladditions.advancements.use_watering_can.desc": "Используйте лейку, чтобы удобрить посевы",
 
   "additionaladditions.gui.config.restart": "Перезапустите игру, чтобы применить изменения",
-  "additionaladditions.gui.pocket_jukebox.tooltip": "Двойное нажатие пластинкой, чтобы играть"
+  "additionaladditions.gui.pocket_jukebox.tooltip": "Вторичный клик пластинкой, чтобы играть"
 }
