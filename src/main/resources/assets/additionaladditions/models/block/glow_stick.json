@@ -4,6 +4,7 @@
 		"0": "additionaladditions:block/glow_stick",
 		"particle": "additionaladditions:block/glow_stick"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"name": "glow_stick_0",

@@ -3,6 +3,7 @@
 		"0": "additionaladditions:block/rope",
 		"particle": "additionaladditions:block/rope"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [6.5, 0, 8],

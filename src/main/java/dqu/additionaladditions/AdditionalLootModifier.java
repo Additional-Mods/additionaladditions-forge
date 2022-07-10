@@ -1,6 +1,8 @@
 package dqu.additionaladditions;
 
-import com.google.gson.JsonObject;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dqu.additionaladditions.config.Config;
 import dqu.additionaladditions.config.ConfigValues;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -19,9 +21,11 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Supplier;
 
 public class AdditionalLootModifier extends LootModifier {
     private static final ResourceLocation ELDER_GUARDIAN_LOOT_TABLE_ID = EntityType.ELDER_GUARDIAN.getDefaultLootTable();
@@ -35,6 +39,9 @@ public class AdditionalLootModifier extends LootModifier {
     private static final ResourceLocation SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID = BuiltInLootTables.SHIPWRECK_SUPPLY;
 
     protected final LootItemCondition[] conditions;
+
+    public static final Supplier<Codec<AdditionalLootModifier>> CODEC = Suppliers.memoize(() ->
+        RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, AdditionalLootModifier::new)));
 
     public AdditionalLootModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
@@ -122,15 +129,8 @@ public class AdditionalLootModifier extends LootModifier {
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<AdditionalLootModifier> {
-        @Override
-        public AdditionalLootModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) {
-            return new AdditionalLootModifier(ailootcondition);
-        }
-
-        @Override
-        public JsonObject write(AdditionalLootModifier instance) {
-            return this.makeConditions(instance.conditions);
-        }
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec() {
+        return CODEC.get();
     }
 }

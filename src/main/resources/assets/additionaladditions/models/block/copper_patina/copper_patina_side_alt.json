@@ -4,6 +4,7 @@
         "particle": "additionaladditions:block/copper_patina_dot",
         "overlay": "additionaladditions:block/copper_patina_overlay"
     },
+    "render_type": "cutout",
     "elements": [
         {   "from": [ 0, 0.25, 8 ],
             "to": [ 16, 0.25, 16 ],

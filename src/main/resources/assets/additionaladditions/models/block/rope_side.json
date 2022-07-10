@@ -4,6 +4,7 @@
 		"1": "block/dark_oak_planks",
 		"particle": "additionaladditions:block/rope_knot"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [7, 13, 0],
