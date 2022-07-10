@@ -4,7 +4,7 @@ license="LGPL-3.0-only"
 issueTrackerURL="https://github.com/Additional-Mods/additionaladditions"
 [[mods]]
 modId="additionaladditions"
-version="5.0.1"
+version="5.0.1b"
 displayName="Additional Additions"
 logoFile="icon.png"
 authors="Dqu1J"
@@ -16,7 +16,7 @@ description='''
 [[dependencies.additionaladditions]]
     modId="forge"
     mandatory=true
-    versionRange="[41.0.85,)"
+    versionRange="[41.0.91,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.additionaladditions]]
