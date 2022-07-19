@@ -31,19 +31,24 @@ public class AdditionalEvents {
         }
     }
 
+    @Mod.EventBusSubscriber(modid = AdditionalAdditions.namespace, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientRegisterEvents {
+        @SubscribeEvent
+        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
+            event.registerAboveAll("additionalspyglass", (gui, mStack, partialTicks, screenWidth, screenHeight) -> {
+                gui.setupOverlayRenderState(true, false);
+                if (AdditionalAdditions.zoom) {
+                    gui.renderSpyglassOverlay((float) AdditionalAdditions.spyglassOverlay);
+                }
+            });
+        }
+    }
+
     @Mod.EventBusSubscriber(modid = AdditionalAdditions.namespace, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class Events {
         @SubscribeEvent
         public static void registerResourceLoaders(AddReloadListenerEvent event) {
             event.addListener(BehaviourManager.INSTANCE);
-        }
-
-        @SubscribeEvent
-        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-            event.registerAboveAll("AdditionalSpyglass", (gui, mStack, partialTicks, screenWidth, screenHeight) -> {
-                gui.setupOverlayRenderState(true, false);
-                if (AdditionalAdditions.zoom) gui.renderSpyglassOverlay((float) AdditionalAdditions.spyglassOverlay);
-            });
         }
     }
 }
