@@ -125,9 +125,9 @@ public class AdditionalRegistry {
     public static final RegistryObject<SoundEvent> SOUND_EVENT_1507 = SOUND_EVENTS.register("1507", () -> U_SOUND_EVENT_1507);
 
     // Music Disc Items
-    public static final RegistryObject<Item> MUSIC_DISC_0308 = ITEMS.register("music_disc_0308", () -> new AdditionalMusicDiscItem(15, U_SOUND_EVENT_0308, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
-    public static final RegistryObject<Item> MUSIC_DISC_1007 = ITEMS.register("music_disc_1007", () -> new AdditionalMusicDiscItem(15, U_SOUND_EVENT_1007, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
-    public static final RegistryObject<Item> MUSIC_DISC_1507 = ITEMS.register("music_disc_1507", () -> new AdditionalMusicDiscItem(15, U_SOUND_EVENT_1507, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> MUSIC_DISC_0308 = ITEMS.register("music_disc_0308", () -> new AdditionalMusicDiscItem(15, U_SOUND_EVENT_0308, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE), 83));
+    public static final RegistryObject<Item> MUSIC_DISC_1007 = ITEMS.register("music_disc_1007", () -> new AdditionalMusicDiscItem(15, U_SOUND_EVENT_1007, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE), 102));
+    public static final RegistryObject<Item> MUSIC_DISC_1507 = ITEMS.register("music_disc_1507", () -> new AdditionalMusicDiscItem(15, U_SOUND_EVENT_1507, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE), 214));
 
     // Potions
     public static final RegistryObject<Potion> GLOW_POTION = POTIONS.register("glow_potion", () -> new Potion(new MobEffectInstance(MobEffects.GLOWING, 3600)));
