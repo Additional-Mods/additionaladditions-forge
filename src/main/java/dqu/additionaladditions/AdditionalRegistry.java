@@ -58,6 +58,7 @@ public class AdditionalRegistry {
     public static final RegistryObject<Item> DEPTH_METER_ITEM = ITEMS.register("depth_meter", () -> new DepthMeterItem(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
     public static final RegistryObject<Item> MYSTERIOUS_BUNDLE_ITEM = ITEMS.register("mysterious_bundle", () -> new MysteriousBundleItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> GOLD_RING = ITEMS.register("gold_ring", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS).stacksTo(1)));
+    public static final RegistryObject<Item> ROSE_GOLD_ALLOY = ITEMS.register("rose_gold_alloy", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> POCKET_JUKEBOX_ITEM = ITEMS.register("pocket_jukebox", () -> new PocketJukeboxItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
 
     // Foods
