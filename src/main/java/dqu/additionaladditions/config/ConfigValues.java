@@ -25,7 +25,10 @@ public enum ConfigValues {
     CROSSBOWS(6, new ConfigProperty("Crossbows")),
     TRIDENT_SHARD(6, new ConfigProperty("TridentShard")),
     GLOW_STICK(6, new ConfigProperty("GlowStick")),
-    GILDED_NETHERITE(6, new ConfigProperty("GildedNetherite")),
+    GILDED_NETHERITE(8, new ConfigProperty("GildedNetherite", new ListConfigValue()
+            .put(new ConfigProperty("enabled"))
+            .put(new ConfigProperty("fireResistancePerPiece", new FloatConfigValue(2.5f)))
+    )),
     DEPTH_METER(6, new ConfigProperty("DepthMeter", new ListConfigValue()
             .put(new ConfigProperty("enabled"))
             .put(new ConfigProperty("displayElevationAlways", ConfigValueType.FALSE))
@@ -43,8 +46,7 @@ public enum ConfigValues {
             .put(new ConfigProperty("enabled"))
             .put(new ConfigProperty("duration", new IntegerConfigValue(5)))
     )),
-    HASTE_POTIONS(6, new ConfigProperty("HastePotions")),
-    BUNDLE_RECIPE(6, new ConfigProperty("BundleRecipe"));
+    HASTE_POTIONS(6, new ConfigProperty("HastePotions"));
 
     private final int version;
     private final ConfigProperty configProperty;

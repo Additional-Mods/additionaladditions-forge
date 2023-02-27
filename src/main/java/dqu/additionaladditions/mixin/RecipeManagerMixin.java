@@ -41,7 +41,6 @@ public class RecipeManagerMixin {
                     case "honeyed_apple" -> { if (!Config.getBool(ConfigValues.FOOD, "HoneyedApple")) toRemove.add(identifier); }
                     case "pocket_jukebox" -> { if (!Config.getBool(ConfigValues.POCKET_JUKEBOX)) toRemove.add(identifier); }
                     case "powered_rails" -> { if (!Config.getBool(ConfigValues.POWERED_RAILS_COPPER_RECIPE)) toRemove.add(identifier); }
-                    case "bundle" -> { if (!Config.getBool(ConfigValues.BUNDLE_RECIPE)) toRemove.add(identifier); }
                     default -> {
                         if (identifier.getPath().startsWith("rose_gold")) {
                             if (!Config.getBool(ConfigValues.ROSE_GOLD)) toRemove.add(identifier);
@@ -50,11 +49,11 @@ public class RecipeManagerMixin {
                             if (!Config.getBool(ConfigValues.FOOD, "FriedEgg")) toRemove.add(identifier);
                         }
                         if (identifier.getPath().startsWith("gilded_netherite")) {
-                            if (!Config.getBool(ConfigValues.GILDED_NETHERITE)) toRemove.add(identifier);
+                            if (!Config.getBool(ConfigValues.GILDED_NETHERITE, "enabled")) toRemove.add(identifier);
                             if (Config.getBool(ConfigValues.GOLD_RING)) toRemove.add(identifier);
                         }
                         if (identifier.getPath().startsWith("ring_gilded_netherite")) {
-                            if (!Config.getBool(ConfigValues.GILDED_NETHERITE)) toRemove.add(identifier);
+                            if (!Config.getBool(ConfigValues.GILDED_NETHERITE, "enabled")) toRemove.add(identifier);
                             if (!Config.getBool(ConfigValues.GOLD_RING)) toRemove.add(identifier);
                         }
                     }

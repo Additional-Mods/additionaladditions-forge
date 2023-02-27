@@ -43,11 +43,17 @@ public abstract class PlayerMixin extends LivingEntity {
         if (level.isClientSide()) return;
         if (this.isEyeInFluidType(ForgeMod.LAVA_TYPE.get()) || this.getRemainingFireTicks() > 0) return;
 
+        Float durationPerPiece = Config.get(ConfigValues.GILDED_NETHERITE, "fireResistancePerPiece");
+
+        if (durationPerPiece == null) {
+            return;
+        }
+
         float duration = 0.0f;
         for (ItemStack stack : this.getArmorSlots()) {
             if (!stack.isEmpty() && stack.getItem() instanceof ArmorItem armorItem) {
                 if (armorItem.getMaterial() == AdditionalRegistry.GILDED_NETHERITE_ARMOR_MATERIAL) {
-                    duration += 2.5f;
+                    duration += durationPerPiece;
                 }
             }
         }
@@ -55,6 +61,6 @@ public abstract class PlayerMixin extends LivingEntity {
         if (duration <= 0.0f) return;
 
         int durationCeil = (int) Math.ceil(duration);
-        this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, (durationCeil*20)+5));
+        this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, (durationCeil*20)+5, 0, false, false));
     }
 }
