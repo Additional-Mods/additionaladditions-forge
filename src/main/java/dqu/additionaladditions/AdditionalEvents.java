@@ -28,7 +28,7 @@ public class AdditionalEvents {
             if (mc.player.isHolding(AdditionalRegistry.DEPTH_METER_ITEM.get())) {
                 if (Config.getBool(ConfigValues.DEPTH_METER, "displayElevationAlways")) {
                     String level = String.valueOf((int) mc.player.getY());
-                    mc.player.displayClientMessage(MutableComponent.create(new TranslatableContents("depth_meter.elevation", level)), true);
+                    mc.player.displayClientMessage(MutableComponent.create(new TranslatableContents("depth_meter.elevation", null, new String[]{level})), true);
                 }
             }
         }
@@ -41,7 +41,7 @@ public class AdditionalEvents {
             event.registerAboveAll("additionalspyglass", (gui, mStack, partialTicks, screenWidth, screenHeight) -> {
                 gui.setupOverlayRenderState(true, false);
                 if (AdditionalAdditions.zoom) {
-                    gui.renderSpyglassOverlay((float) AdditionalAdditions.spyglassOverlay);
+                    gui.renderSpyglassOverlay(mStack, (float) AdditionalAdditions.spyglassOverlay);
                 }
             });
         }
