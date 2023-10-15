@@ -165,14 +165,14 @@ public class RopeBlock extends Block {
             return InteractionResult.PASS;
         }
 
-        if (!player.getMainHandItem().is(Item.byBlock(AdditionalRegistry.ROPE_BLOCK.get()))) {
+        if (!player.getMainHandItem().is(Item.byBlock(this))) {
             return InteractionResult.PASS;
         }
 
         BlockPos down = pos.relative(Direction.DOWN);
         BlockState statedown = world.getBlockState(down);
 
-        if (statedown.is(AdditionalRegistry.ROPE_BLOCK.get())) {
+        if (statedown.is(this)) {
             return statedown.getBlock().use(statedown, world, down, player, hand, hit);
         } else if (statedown.isAir() && !world.isOutsideBuildHeight(down.getY())) {
             world.setBlockAndUpdate(down, state);

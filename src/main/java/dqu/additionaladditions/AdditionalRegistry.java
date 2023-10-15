@@ -19,7 +19,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.food.FoodProperties;
@@ -31,11 +30,14 @@ import net.minecraft.world.level.block.RedstoneLampBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class AdditionalRegistry {
@@ -70,6 +72,8 @@ public class AdditionalRegistry {
     // Armor
     public static final ArmorMaterial ROSE_GOLD_ARMOR_MATERIAL = new RoseGoldArmorMaterial();
     public static final ArmorMaterial GILDED_NETHERITE_ARMOR_MATERIAL = new GildedNetheriteArmorMaterial();
+    public static final RegistryObject<Item> ROSE_GOLD_UPGRADE = ITEMS.register("rose_gold_upgrade", () -> AdditionalSmithingTemplate.create("rose_gold_upgrade", AdditionalSmithingTemplate.iconsEquipment(), List.of(AdditionalSmithingTemplate.SmithingIcon.ALLOY.location())));
+    public static final RegistryObject<Item> GILDED_NETHERITE_UPGRADE = ITEMS.register("gilded_netherite_upgrade", () -> AdditionalSmithingTemplate.create("gilded_netherite_upgrade", AdditionalSmithingTemplate.iconsEquipment(), List.of(AdditionalSmithingTemplate.SmithingIcon.RING.location())));
 
     public static final RegistryObject<Item> ROSE_GOLD_HELMET = ITEMS.register("rose_gold_helmet", () -> new AdditionalArmorItem(ROSE_GOLD_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> ROSE_GOLD_CHESTPLATE = ITEMS.register("rose_gold_chestplate", () -> new AdditionalArmorItem(ROSE_GOLD_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
@@ -93,11 +97,11 @@ public class AdditionalRegistry {
     public static final RegistryObject<Item> GILDED_NETHERITE_HOE = ITEMS.register("gilded_netherite_hoe", () -> new AdditionalHoeItem(GildedNetheriteToolMaterial.MATERIAL, -2, 0, new Item.Properties().fireResistant()));
 
     // Blocks
-    public static final RegistryObject<Block> GLOW_STICK_BLOCK = BLOCKS.register("glow_stick", () -> new GlowStickBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).noCollission().lightLevel((state) -> 12).instabreak()));
-    public static final RegistryObject<Block> ROPE_BLOCK = BLOCKS.register("rope", () -> new RopeBlock(BlockBehaviour.Properties.of(Material.BAMBOO).noCollission().sound(SoundType.WOOL).instabreak()));
-    public static final RegistryObject<Block> COPPER_PATINA = BLOCKS.register("copper_patina", () -> new CopperPatinaBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).noCollission().sound(SoundType.TUFF).instabreak()));
-    public static final RegistryObject<Block> AMETHYST_LAMP = BLOCKS.register("amethyst_lamp", () -> new RedstoneLampBlock(BlockBehaviour.Properties.of(Material.BUILDABLE_GLASS).sound(SoundType.GLASS).strength(0.3f)));
-    public static final RegistryObject<Block> PATINA_BLOCK = BLOCKS.register("patina_block", () -> new PatinaBlock(BlockBehaviour.Properties.of(Material.SAND).sound(SoundType.ROOTED_DIRT).strength(0.5f)));
+    public static final RegistryObject<Block> GLOW_STICK_BLOCK = BLOCKS.register("glow_stick", () -> new GlowStickBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE).pushReaction(PushReaction.DESTROY).noCollission().lightLevel((state) -> 12).instabreak()));
+    public static final RegistryObject<Block> ROPE_BLOCK = BLOCKS.register("rope", () -> new RopeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).pushReaction(PushReaction.DESTROY).noCollission().sound(SoundType.WOOL).instabreak()));
+    public static final RegistryObject<Block> COPPER_PATINA = BLOCKS.register("copper_patina", () -> new CopperPatinaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).pushReaction(PushReaction.DESTROY).noCollission().sound(SoundType.TUFF).instabreak()));
+    public static final RegistryObject<Block> AMETHYST_LAMP = BLOCKS.register("amethyst_lamp", () -> new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).pushReaction(PushReaction.NORMAL).sound(SoundType.GLASS).strength(0.3f)));
+    public static final RegistryObject<Block> PATINA_BLOCK = BLOCKS.register("patina_block", () -> new PatinaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).pushReaction(PushReaction.NORMAL).sound(SoundType.ROOTED_DIRT).strength(0.5f)));
 
     // Block Items
     public static final RegistryObject<Item> COPPER_PATINA_ITEM = ITEMS.register("copper_patina", () -> new CopperPatinaItem(COPPER_PATINA.get(), new Item.Properties()));

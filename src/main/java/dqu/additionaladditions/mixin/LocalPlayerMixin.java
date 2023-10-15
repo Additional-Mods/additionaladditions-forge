@@ -20,7 +20,7 @@ public class LocalPlayerMixin {
     private void checkSneakZoom(CallbackInfoReturnable<Boolean> cir) {
         if (!Config.getBool(ConfigValues.CROSSBOWS)) return;
         Player player = (Player) (Object) this;
-        if (!player.getLevel().isClientSide()) return;
+        if (!player.level().isClientSide()) return;
         ItemStack stack = player.getMainHandItem();
         Minecraft mc = Minecraft.getInstance();
         if (stack.is(AdditionalRegistry.CROSSBOW_WITH_SPYGLASS.get()) && mc.options.getCameraType().isFirstPerson()) {

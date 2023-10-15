@@ -40,7 +40,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void applyFireResistance(CallbackInfo ci) {
-        if (level.isClientSide()) return;
+        if (this.level().isClientSide()) return;
         if (this.isEyeInFluidType(ForgeMod.LAVA_TYPE.get()) || this.getRemainingFireTicks() > 0) return;
 
         Float durationPerPiece = Config.get(ConfigValues.GILDED_NETHERITE, "fireResistancePerPiece");

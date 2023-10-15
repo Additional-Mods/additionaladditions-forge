@@ -34,17 +34,17 @@ public class GlowStickEntity extends ThrowableItemProjectile {
 
     protected void onHit(HitResult hitResult) {
         super.onHit(hitResult);
-        if (!this.level.isClientSide()) {
+        if (!this.level().isClientSide()) {
             this.remove(RemovalReason.DISCARDED);
             BlockPos pos = BlockPos.containing(this.getX(), this.getY(), this.getZ());
-            if (this.level.getBlockState(pos).isAir()) {
-                this.level.setBlockAndUpdate(pos, AdditionalRegistry.GLOW_STICK_BLOCK.get().defaultBlockState()
-                        .setValue(GlowStickBlock.FLIPPED, level.getRandom().nextBoolean()));
-                this.level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.GLASS_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            if (this.level().getBlockState(pos).isAir()) {
+                this.level().setBlockAndUpdate(pos, AdditionalRegistry.GLOW_STICK_BLOCK.get().defaultBlockState()
+                        .setValue(GlowStickBlock.FLIPPED, level().getRandom().nextBoolean()));
+                this.level().playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.GLASS_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
             } else {
                 ItemStack stack = new ItemStack(AdditionalRegistry.GLOW_STICK_ITEM.get(), 1);
-                ItemEntity entity = new ItemEntity(this.level, this.getX(), this.getY(), this.getZ(), stack);
-                this.level.addFreshEntity(entity);
+                ItemEntity entity = new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), stack);
+                this.level().addFreshEntity(entity);
             }
         }
     }
