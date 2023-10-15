@@ -5,7 +5,7 @@ import dqu.additionaladditions.config.ConfigValues;
 import dqu.additionaladditions.item.WrenchItem;
 import dqu.additionaladditions.misc.CreativeAdder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -52,11 +52,11 @@ public class AdditionalAdditions {
                 public ItemStack execute(BlockSource pointer, ItemStack stack) {
                     WrenchItem wrench = (WrenchItem) stack.getItem();
 
-                    BlockState dstate = pointer.getBlockState();
-                    BlockPos pos = pointer.getPos().relative(dstate.getValue(BlockStateProperties.FACING));
-                    BlockState state = pointer.getLevel().getBlockState(pos);
+                    BlockState dstate = pointer.state();
+                    BlockPos pos = pointer.pos().relative(dstate.getValue(BlockStateProperties.FACING));
+                    BlockState state = pointer.level().getBlockState(pos);
 
-                    wrench.dispenserUse(pointer.getLevel(), pos, state, stack);
+                    wrench.dispenserUse(pointer.level(), pos, state, stack);
                     return stack;
                 }
             });
