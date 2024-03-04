@@ -75,7 +75,7 @@ public class AdditionalLootModifier extends LootModifier {
                 .when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.025f, 0.01f))
                 .add(LootItem.lootTableItem(AdditionalRegistry.CHICKEN_NUGGET.get()))
         );
-        register(BuiltInLootTables.PIGLIN_BARTERING, () -> Config.getBool(ConfigValues.GILDED_NETHERITE), LootPool.lootPool()
+        register(BuiltInLootTables.PIGLIN_BARTERING, () -> Config.getBool(ConfigValues.GILDED_NETHERITE, "enabled"), LootPool.lootPool()
                 .setRolls(ConstantValue.exactly(1))
                 .when(LootItemRandomChanceCondition.randomChance(0.015f))
                 .add(LootItem.lootTableItem(AdditionalRegistry.GOLD_RING.get()))
